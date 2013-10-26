@@ -6,6 +6,9 @@
 # Contact Me:  JeremyRobturtle@gmail.com
 '''Simple install script of newycm_extra_conf.py
 '''
+
+# TODO (LIU Yang) Is there any installation tool for plain files?
+# It should be tiny and neat.
 import argparse
 import os
 import subprocess
@@ -29,8 +32,6 @@ def main():
     tpath = subprocess.check_output('echo '+args.tpath, shell=True).rstrip()
     bpath = subprocess.check_output('echo '+args.bpath, shell=True).rstrip()
 
-    print("tpath: ".format(args.tpath))
-
     if not os.path.exists(tpath):
         os.makedirs(tpath)
     if not os.path.exists(bpath):
@@ -41,13 +42,16 @@ def main():
         if not os.path.exists(os.path.join(tpath, template)):
             print("INSTALL {:20s} ==> {}".format(template, tpath))
             shutil.copy(template, tpath)
+        # TODO (LIU Yang) Check if it needs update, behaviors like 'cp -u'
         else:
             print("{} already exists".format(template))
-    if not os.path.exists(os.path.join(bpath, 'newycm_extra_conf.py')):
-        print("INSTALL {:20s} ==> {}".format('newycm_extra_conf.py', bpath))
-        shutil.copy('newycm_extra_conf.py', bpath)
+
+    fname_out = 'newycm_extra_conf.py'
+    if not os.path.exists(os.path.join(bpath, fname_out)):
+        print("INSTALL {:20s} ==> {}".format(fname_out, bpath))
+        shutil.copy(fname_out, bpath)
     else:
-        print("{} already exists".format('newycm_extra_conf.py'))
+        print("{} already exists".format(fname_out))
 
 if __name__ == '__main__':
     main()

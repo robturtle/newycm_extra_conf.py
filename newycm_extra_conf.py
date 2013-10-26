@@ -34,7 +34,7 @@ PARSER.add_argument('--lang', action='store', dest='language',
         help='Choose language to be supported. Default is c++')
 
 PARSER.add_argument('-l', nargs='*', dest='libs',
-        choices=('qt',),
+        choices=('qt','opencv'),
         help='Add library support')
 
 PARSER.add_argument('--path', action='store', dest='path',
