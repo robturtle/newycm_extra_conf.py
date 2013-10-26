@@ -18,13 +18,19 @@ import os
 import subprocess
 import shutil
 
-_VERSION = '0.1' # 2013-10-26 08:41:56
+_VERSION = '0.2' # 2013-10-27 02:01:31
 
 SRC_PATH = "$NAME/Templates"
 _FNAME_OUT = '.ycm_extra_conf.py'
 DICT_FNAME_IN = {
-        'c++'    : 'ycm.cpp.py',
-        'c'      : 'ycm.c.py',
+        'c++' : 'ycm.cpp.py',
+        'c'   : 'ycm.c.py',
+        }
+
+LIBS_LIST = ('qt', 'opencv')
+DICT_LIBS_FNAME = {
+        'qt'     : 'ycm.cpp.qt.py',
+        'opencv' : 'ycm.cpp.opencv.py',
         }
 
 PARSER = argparse.ArgumentParser(version=_VERSION)
@@ -34,7 +40,7 @@ PARSER.add_argument('--lang', action='store', dest='language',
         help='Choose language to be supported. Default is c++')
 
 PARSER.add_argument('-l', nargs='*', dest='libs',
-        choices=('qt','opencv'),
+        choices=LIBS_LIST,
         help='Add library support')
 
 PARSER.add_argument('--path', action='store', dest='path',
@@ -49,13 +55,20 @@ def main():
 
     fname_in = DICT_FNAME_IN[args.language]
     # Parse shell environment variables:
-    path = subprocess.check_output('echo '+args.path, shell=True)
-    fname_in = os.path.join(path.rstrip(), fname_in)
+    path = subprocess.check_output('echo '+args.path, shell=True).rstrip()
+    fname_in = os.path.join(path, fname_in)
     if not os.path.exists(fname_in):
         raise OSError(fname_in)
 
-    # TODO deal with opencv and qt
     shutil.copy(fname_in, _FNAME_OUT)
+
+    if args.libs:
+        with open(_FNAME_OUT, 'a') as outf:
+            for lib in args.libs:
+                libf_path = os.path.join(path, DICT_LIBS_FNAME[lib])
+                with open(libf_path) as libf:
+                    lib_config = libf.read()
+                    outf.write(lib_config)
 
 if __name__ == '__main__':
     try:

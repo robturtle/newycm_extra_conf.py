@@ -12,7 +12,7 @@
 import argparse
 import os
 import subprocess
-from newycm_extra_conf import DICT_FNAME_IN
+from newycm_extra_conf import DICT_FNAME_IN, DICT_LIBS_FNAME
 import shutil
 
 PARSER = argparse.ArgumentParser()
@@ -37,7 +37,7 @@ def main():
     if not os.path.exists(bpath):
         os.makedirs(bpath)
 
-    templates = DICT_FNAME_IN.values()
+    templates = DICT_FNAME_IN.values() + DICT_LIBS_FNAME.values()
     for template in templates:
         if not os.path.exists(os.path.join(tpath, template)):
             print("INSTALL {:20s} ==> {}".format(template, tpath))
