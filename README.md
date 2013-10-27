@@ -13,3 +13,8 @@ newycm_extra_conf.py              # Support c++ files as default
 newycm_extra_conf.py --lang=c     # Support c files
 newycm_extra_conf.py -l qt opencv # Support c++ libraries: opencv and qt
 ```
+
+TODO:
+
+- Add complete Qt4 flags in
+- Add complete OpenCV2 flags in
