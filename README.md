@@ -8,8 +8,8 @@ Create a new .ycm_extra_conf.py according to given options
 
 Examples:
 
-{% highlight bash %}
+```bash
 .ycm_extra_conf.py              # Support c++ files as default
 .ycm_extra_conf.py --lang=c     # Support c files
 .ycm_extra_conf.py -l qt opencv # Support c++ libraries: opencv and qt
-{% endhighlight %}
+```
