@@ -39,6 +39,7 @@ flags = [
 '-Wextra',
 #'-Werror',          # Fucking unused parameter argc!!!
 #'-Wc++98-compat',   # Well i love c++11!!!
+'-Wmissing-braces=n',# This warning is no longer useful in c++11
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
