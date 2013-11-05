@@ -35,7 +35,7 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-'-Wall',
+#'-Wall',            # The Wmissing-braces is useless in c++11
 '-Wextra',
 #'-Werror',          # Fucking unused parameter argc!!!
 #'-Wc++98-compat',   # Well i love c++11!!!
