@@ -13,5 +13,5 @@ test -d ~/Templates || mkdir ~/Templates
 
 ln -s $(pwd)/newycm_extra_conf.py ~/bin
 for template in $(ls ycm.*.py); do
-    ln -s "$template" ~/Templates
+    ln -s $(pwd)/"$template" ~/Templates
 done
