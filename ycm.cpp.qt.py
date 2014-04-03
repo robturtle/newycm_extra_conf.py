@@ -12,6 +12,7 @@ QtModules = ["QtCLucene", "QtDeclarative", "QtDesignerComponents", "QtHelp", "Qt
 from subprocess import Popen
 from subprocess import PIPE
 qtflags = []
+# TODO just inject the flags I used but not all of them
 for module in QtModules:
     qtflags += Popen(['pkg-config', '--cflags'] + QtModules, stdout=PIPE).communicate()[0].split()
 
